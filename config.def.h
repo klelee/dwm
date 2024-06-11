@@ -76,8 +76,9 @@ static const char *termcmd[]  = { "xfce4-terminal", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY1,                       XK_d,      spawn,          {.v = roficmd } },
-	{ MODKEY1,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY1,                      XK_d,      spawn,          {.v = roficmd } },
+	{ MODKEY1,             		XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY1,			XK_p,	   spawn,	   SHCMD("flameshot gui") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -102,6 +103,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -111,7 +113,6 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
 /* button definitions */
