@@ -72,6 +72,7 @@ static const Key keys[] = {
 	{ MODKEY1,						XK_space,		spawn,					{.v = roficmd } },				// 打开rofi程序启动器
 	{ MODKEY1,						XK_Return,		spawn,					{.v = termcmd } },				// 打开终端
 	{ MODKEY1,						XK_p,   		spawn,					SHCMD("flameshot gui") },		// 打开flameshot截图
+	{ MODKEY,						XK_Escape,   		spawn,					SHCMD("slock") },       		// 锁屏
 	{ MODKEY,						XK_b,			togglebar,				{0} },							// 显示和隐藏bar
 	{ MODKEY,						XK_j,			focusstack,				{.i = +1 } },					// 向左/上移动焦点
 	{ MODKEY,						XK_k,			focusstack,				{.i = -1 } },					// 向右/下移动焦点
