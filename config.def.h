@@ -68,35 +68,36 @@ static const char *roficmd[] = { "rofi", "-show", "run" };
 static const char *termcmd[]  = { "xfce4-terminal", NULL };
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY1,                      XK_d,      spawn,          {.v = roficmd } },
-	{ MODKEY1,             		XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY1,			XK_p,	   spawn,	   SHCMD("flameshot gui") },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,	                XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	/* modifier						key				function				argument */
+	{ MODKEY1,						XK_space,		spawn,					{.v = roficmd } },				// 打开rofi程序启动器
+	{ MODKEY1,						XK_Return,		spawn,					{.v = termcmd } },				// 打开终端
+	{ MODKEY1,						XK_p,   		spawn,					SHCMD("flameshot gui") },		// 打开flameshot截图
+	{ MODKEY,						XK_b,			togglebar,				{0} },							// 显示和隐藏bar
+	{ MODKEY,						XK_j,			focusstack,				{.i = +1 } },					// 向左/上移动焦点
+	{ MODKEY,						XK_k,			focusstack,				{.i = -1 } },					// 向右/下移动焦点
+	{ MODKEY,						XK_h,			setmfact,				{.f = -0.05} },					// 窗口大小向左调整
+	{ MODKEY,						XK_l,			setmfact,				{.f = +0.05} },					// 窗口大小向右调整
+	{ MODKEY,						XK_i,			incnmaster,				{.i = +1 } },					// 窗口水平排列
+	{ MODKEY,						XK_d,			incnmaster,				{.i = -1 } },					// 窗口竖直排列
+	{ MODKEY,						XK_s,			zoom,					{0} },							// 对调两个窗口
+	{ MODKEY1,						XK_Tab,			view,					{0} },							// 在最近使用的两个窗口间跳转查看，类似于windows的Ait+tab
+	{ MODKEY,						XK_q,			killclient,				{0} },							// 关闭窗口
+	{ MODKEY,						XK_t,			setlayout,				{.v = &layouts[0]} },			// 平铺模式
+	{ MODKEY,						XK_f,			setlayout,				{.v = &layouts[1]} },			// 浮动模式
+	{ MODKEY,						XK_m,			setlayout,				{.v = &layouts[2]} },			// 单页模式
+	{ MODKEY,						XK_space,		setlayout,				{0} },							// 在平铺和浮动模式之间切换
+	{ MODKEY|ShiftMask,				XK_space,		togglefloating,			{0} },							// 使窗口在平铺和浮动模式之间切换
+	// { MODKEY,						XK_0,      view,					{.ui = ~0 } },					// 将所有打开的窗口在所有tag上显示
+	// { MODKEY|ShiftMask,				XK_0,      tag,						{.ui = ~0 } },					// 将所有窗口显示在对应的tag上
+	{ MODKEY,						XK_comma,		focusmon,				{.i = -1 } },					// super + 逗号 将焦点切换到前一个监视器
+	{ MODKEY,						XK_period,		focusmon,				{.i = +1 } },					// super + 句号 将焦点切换到后一个监视器
+	{ MODKEY|ShiftMask,				XK_comma,		tagmon,					{.i = -1 } },					// super + shift + 逗号 将当前选中的窗口移动到前一个标记的监视器
+	{ MODKEY|ShiftMask,				XK_period,		tagmon,					{.i = +1 } },					// super + shift + 句号 将当前选中的窗口移动到后一个标记的监视器
+	{ MODKEY,						XK_minus,		setgaps,				{.i = -1 } },					// super + 减号 减小gaps
+	{ MODKEY,						XK_equal,		setgaps,				{.i = +1 } },					// super + 加号 增大gaps
+	{ MODKEY|ShiftMask,				XK_equal,		setgaps,				{.i = 0  } },					// super + shift + 等号 关闭gaps
+	{ MODKEY|ShiftMask,				XK_e,			quit,					{0} },							// 退出dwm
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
